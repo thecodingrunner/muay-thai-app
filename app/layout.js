@@ -1,7 +1,20 @@
-import { Inter } from "next/font/google";
+// import { Chakra_Petch } from "next/font/google";
+import { Orbitron } from "next/font/google";
 import "./globals.css";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
+import Provider from "../components/Provider";
 
-const inter = Inter({ subsets: ["latin"] });
+// const chakra = Chakra_Petch({ 
+//   weight: ["300", "400","500","600","700"],
+//   subsets: ["latin"]
+// });
+
+const orbitron = Orbitron({ 
+  weight: ["400", "500","600","700","800","900"],
+  subsets: ["latin"],
+  display: "swap",
+});
 
 export const metadata = {
   title: "Create Next App",
@@ -9,9 +22,16 @@ export const metadata = {
 };
 
 export default function RootLayout({ children }) {
+  console.log('Chakra class name:', orbitron.className);
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body className={`${orbitron.className} bg-image`}>
+        <Provider>
+          <Header />
+          {children}
+          <Footer />
+        </Provider>
+      </body>
     </html>
   );
 }
